@@ -1,14 +1,10 @@
-flappy-bird-rn/node_modules/ip/lib/ip.js
-flappy-bird-rn/node_modlues
-.expo/*
-npm-debug.*
-*.jks
-*.p8
-*.p12
-*.key
-*.mobileprovision
-*.orig.*
-web-build/
-
-# macOS
-.DS_Store
+/flappy-bird-rn/.expo/*
+/flappy-bird-rn/npm-debug.*
+/flappy-bird-rn/*.jks
+/flappy-bird-rn/*.p8
+/flappy-bird-rn/*.p12
+/flappy-bird-rn/*.key
+/flappy-bird-rn/*.mobileprovision
+/flappy-bird-rn/*.orig.*
+/flappy-bird-rn/web-build/
+/flappy-bird-rn/node_modules/
