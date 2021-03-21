@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {StyleSheet, Text, View, Dimensions} from 'react-native';
 import Bird from './components/Bird'
+import Obstacles from "./components/Obstacles";
 
 export default function App() {
     const screen_width = Dimensions.get("screen").width
@@ -10,6 +11,11 @@ export default function App() {
     const [obstaclesLeft, setObstaclesLeft] = useState(screen_width)
     let gameTimerId
     let obstaclesLeftTimerId
+
+    const obstaclesWidth = 60
+    const obstaclesHeight = 500
+    const gap = 50
+
     // console.log(screen_height)
     // console.log(screen_width)
 
@@ -28,14 +34,14 @@ export default function App() {
 
     // start first obstacles
     useEffect(() => {
-        if(obstaclesLeft > 0) {
+        if(obstaclesLeft > -obstaclesWidth) {
             obstaclesLeftTimerId = setInterval(() => {
                 setObstaclesLeft(obstaclesLeft => obstaclesLeft - 5)
             }, 30)
         }
-        return (
+        return () => {
             clearInterval(obstaclesLeftTimerId)
-        )
+        }
     }, [obstaclesLeft])
 
     return (
@@ -44,7 +50,14 @@ export default function App() {
                 birdBottom = {birdBottom}
                 birdLeft = {birdLeft}
             />
+            <Obstacles
+                obstaclesLeft={obstaclesLeft}
+                obstaclesHeight={obstaclesHeight}
+                obstaclesWidth={obstaclesWidth}
+                gap={gap}
+            />
         </View>
+
     )
 }
 
