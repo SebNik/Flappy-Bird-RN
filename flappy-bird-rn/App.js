@@ -11,10 +11,9 @@ export default function App() {
     const [obstaclesLeft, setObstaclesLeft] = useState(screen_width)
     let gameTimerId
     let obstaclesLeftTimerId
-
+    const gap = 200
     const obstaclesWidth = 60
-    const obstaclesHeight = 500
-    const gap = 50
+    const obstaclesHeight = (screen_height-gap)/2
 
     // console.log(screen_height)
     // console.log(screen_width)
@@ -38,9 +37,12 @@ export default function App() {
             obstaclesLeftTimerId = setInterval(() => {
                 setObstaclesLeft(obstaclesLeft => obstaclesLeft - 5)
             }, 30)
+            return () => {
+                clearInterval(obstaclesLeftTimerId)
+            }
         }
-        return () => {
-            clearInterval(obstaclesLeftTimerId)
+        else {
+            setObstaclesLeft(screen_width)
         }
     }, [obstaclesLeft])
 

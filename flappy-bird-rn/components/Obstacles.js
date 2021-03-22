@@ -24,7 +24,7 @@ const Obstacles = ({obstaclesLeft, obstaclesWidth, obstaclesHeight, gap}) => {
                 width: obstaclesWidth,
                 height: obstaclesHeight,
                 left: obstaclesLeft,
-                bottom: 0 + obstaclesHeight + gap,
+                bottom: 0 + obstaclesHeight+ gap,
             }}>
 
             </View>
