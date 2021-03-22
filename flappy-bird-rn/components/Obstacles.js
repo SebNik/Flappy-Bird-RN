@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View, Image } from 'react-native';
 import bird_image from '../assets/bird.jpg';
 
-const Obstacles = ({color, obstaclesLeft, obstaclesWidth, obstaclesHeight, gap}) => {
+const Obstacles = ({color, obstaclesLeft, obstaclesWidth, obstaclesHeight, gap, randomBottom}) => {
 
     return(
         <>
@@ -12,7 +12,7 @@ const Obstacles = ({color, obstaclesLeft, obstaclesWidth, obstaclesHeight, gap})
                 width: obstaclesWidth,
                 height: obstaclesHeight,
                 left: obstaclesLeft,
-                bottom: 0,
+                bottom: randomBottom,
             }}>
 
             </View>
@@ -24,7 +24,7 @@ const Obstacles = ({color, obstaclesLeft, obstaclesWidth, obstaclesHeight, gap})
                 width: obstaclesWidth,
                 height: obstaclesHeight,
                 left: obstaclesLeft,
-                bottom: 0 + obstaclesHeight+ gap,
+                bottom: obstaclesHeight+ gap + randomBottom,
             }}>
 
             </View>

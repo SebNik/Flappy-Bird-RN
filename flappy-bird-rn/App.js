@@ -9,13 +9,16 @@ export default function App() {
     const birdLeft = screen_width / 2
     const [birdBottom, setBirdBottom] = useState(screen_height / 2)
     const [obstaclesLeftOne, setObstaclesLeftOne] = useState(screen_width)
-    const [obstaclesLeftTwo, setObstaclesLeftTwo] = useState(screen_width+ screen_width/2)
+    const [obstaclesLeftTwo, setObstaclesLeftTwo] = useState(screen_width + screen_width / 2)
+    const [obstaclesNegHeightOne, setObstaclesNegHeightOne] = useState(0)
+    const [obstaclesNegHeightTwo, setObstaclesNegHeightTwo] = useState(0)
+
     let gameTimerId
     let obstaclesLeftTimerIdOne
     let obstaclesLeftTimerIdTwo
     const gap = 200
     const obstaclesWidth = 60
-    const obstaclesHeight = (screen_height-gap)/2
+    const obstaclesHeight = 500
 
     // console.log(screen_height)
     // console.log(screen_width)
@@ -31,48 +34,48 @@ export default function App() {
             }
         }
     }, [birdBottom])
-    console.log(birdBottom)
 
     // start first obstacles
     useEffect(() => {
-        if(obstaclesLeftOne > -obstaclesWidth) {
+        if (obstaclesLeftOne > -obstaclesWidth) {
             obstaclesLeftTimerIdOne = setInterval(() => {
                 setObstaclesLeftOne(obstaclesLeft => obstaclesLeft - 5)
             }, 30)
             return () => {
                 clearInterval(obstaclesLeftTimerIdOne)
             }
-        }
-        else {
+        } else {
             setObstaclesLeftOne(screen_width)
+            setObstaclesNegHeightOne(- Math.random() * 100)
         }
     }, [obstaclesLeftOne])
 
     // start second obstacles
     useEffect(() => {
-        if(obstaclesLeftTwo > -obstaclesWidth) {
+        if (obstaclesLeftTwo > -obstaclesWidth) {
             obstaclesLeftTimerIdTwo = setInterval(() => {
                 setObstaclesLeftTwo(obstaclesLeft => obstaclesLeft - 5)
             }, 30)
             return () => {
                 clearInterval(obstaclesLeftTimerIdTwo)
             }
-        }
-        else {
+        } else {
             setObstaclesLeftTwo(screen_width)
+            setObstaclesNegHeightTwo(- Math.random() * 100)
         }
     }, [obstaclesLeftTwo])
 
     return (
         <View style={styles.container}>
             <Bird
-                birdBottom = {birdBottom}
-                birdLeft = {birdLeft}
+                birdBottom={birdBottom}
+                birdLeft={birdLeft}
             />
             <Obstacles
                 obstaclesLeft={obstaclesLeftOne}
                 obstaclesHeight={obstaclesHeight}
                 obstaclesWidth={obstaclesWidth}
+                randomBottom={obstaclesNegHeightOne}
                 gap={gap}
                 color={'green'}
             />
@@ -80,6 +83,7 @@ export default function App() {
                 obstaclesLeft={obstaclesLeftTwo}
                 obstaclesHeight={obstaclesHeight}
                 obstaclesWidth={obstaclesWidth}
+                randomBottom={setObstaclesNegHeightTwo}
                 gap={gap}
                 color={'red'}
             />
