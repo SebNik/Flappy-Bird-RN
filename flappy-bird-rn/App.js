@@ -65,6 +65,28 @@ export default function App() {
         }
     }, [obstaclesLeftTwo])
 
+    // check for collisions
+    useEffect(() => {
+        if (
+            ((birdBottom < (obstaclesNegHeightOne + obstaclesHeight + 45/2) ||
+                birdBottom > (obstaclesNegHeightOne+obstaclesHeight+gap-45/2)) &&
+            (obstaclesLeftOne > screen_width/2 - 45/2 && obstaclesLeftOne < screen_width/2 + 45/2))
+            ||
+            ((birdBottom < (obstaclesNegHeightTwo + obstaclesHeight + 45/2) ||
+                birdBottom > (obstaclesNegHeightTwo+obstaclesHeight+gap - 45/2)) &&
+                (obstaclesLeftTwo > screen_width/2 - 45/2 && obstaclesLeftTwo < screen_width/2 + 45/2))) {
+            console.log('game over')
+            gameOver()
+        }
+    })
+
+
+    const  gameOver = () => {
+        clearInterval(gameTimerId)
+        clearInterval(obstaclesLeftTimerIdOne)
+        clearInterval(obstaclesLeftTimerIdTwo)
+    }
+
     return (
         <View style={styles.container}>
             <Bird
