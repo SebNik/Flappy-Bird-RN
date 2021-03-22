@@ -8,9 +8,11 @@ export default function App() {
     const screen_height = Dimensions.get('screen').height
     const birdLeft = screen_width / 2
     const [birdBottom, setBirdBottom] = useState(screen_height / 2)
-    const [obstaclesLeft, setObstaclesLeft] = useState(screen_width)
+    const [obstaclesLeftOne, setObstaclesLeftOne] = useState(screen_width)
+    const [obstaclesLeftTwo, setObstaclesLeftTwo] = useState(screen_width+ screen_width/2)
     let gameTimerId
-    let obstaclesLeftTimerId
+    let obstaclesLeftTimerIdOne
+    let obstaclesLeftTimerIdTwo
     const gap = 200
     const obstaclesWidth = 60
     const obstaclesHeight = (screen_height-gap)/2
@@ -33,18 +35,33 @@ export default function App() {
 
     // start first obstacles
     useEffect(() => {
-        if(obstaclesLeft > -obstaclesWidth) {
-            obstaclesLeftTimerId = setInterval(() => {
-                setObstaclesLeft(obstaclesLeft => obstaclesLeft - 5)
+        if(obstaclesLeftOne > -obstaclesWidth) {
+            obstaclesLeftTimerIdOne = setInterval(() => {
+                setObstaclesLeftOne(obstaclesLeft => obstaclesLeft - 5)
             }, 30)
             return () => {
-                clearInterval(obstaclesLeftTimerId)
+                clearInterval(obstaclesLeftTimerIdOne)
             }
         }
         else {
-            setObstaclesLeft(screen_width)
+            setObstaclesLeftOne(screen_width)
         }
-    }, [obstaclesLeft])
+    }, [obstaclesLeftOne])
+
+    // start second obstacles
+    useEffect(() => {
+        if(obstaclesLeftTwo > -obstaclesWidth) {
+            obstaclesLeftTimerIdTwo = setInterval(() => {
+                setObstaclesLeftTwo(obstaclesLeft => obstaclesLeft - 5)
+            }, 30)
+            return () => {
+                clearInterval(obstaclesLeftTimerIdTwo)
+            }
+        }
+        else {
+            setObstaclesLeftTwo(screen_width)
+        }
+    }, [obstaclesLeftTwo])
 
     return (
         <View style={styles.container}>
@@ -53,10 +70,18 @@ export default function App() {
                 birdLeft = {birdLeft}
             />
             <Obstacles
-                obstaclesLeft={obstaclesLeft}
+                obstaclesLeft={obstaclesLeftOne}
                 obstaclesHeight={obstaclesHeight}
                 obstaclesWidth={obstaclesWidth}
                 gap={gap}
+                color={'green'}
+            />
+            <Obstacles
+                obstaclesLeft={obstaclesLeftTwo}
+                obstaclesHeight={obstaclesHeight}
+                obstaclesWidth={obstaclesWidth}
+                gap={gap}
+                color={'red'}
             />
         </View>
 
