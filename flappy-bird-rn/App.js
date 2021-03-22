@@ -1,5 +1,5 @@
-import React, {useState, useEffect} from 'react';
-import {StyleSheet, Text, View, Dimensions} from 'react-native';
+import React, {useEffect, useState} from 'react';
+import {Dimensions, StyleSheet, View} from 'react-native';
 import Bird from './components/Bird'
 import Obstacles from "./components/Obstacles";
 
@@ -46,7 +46,7 @@ export default function App() {
             }
         } else {
             setObstaclesLeftOne(screen_width)
-            setObstaclesNegHeightOne(- Math.random() * 50)
+            setObstaclesNegHeightOne(-Math.random() * 50)
         }
     }, [obstaclesLeftOne])
 
@@ -61,7 +61,7 @@ export default function App() {
             }
         } else {
             setObstaclesLeftTwo(screen_width)
-            setObstaclesNegHeightTwo(- Math.random() * 50)
+            setObstaclesNegHeightTwo(-Math.random() * 50)
         }
     }, [obstaclesLeftTwo])
 

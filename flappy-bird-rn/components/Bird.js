@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, Image } from 'react-native';
+import {Image, View} from 'react-native';
 import bird_image from '../assets/bird.jpg';
 
 const Bird = ({birdBottom, birdLeft}) => {
@@ -11,10 +11,10 @@ const Bird = ({birdBottom, birdLeft}) => {
             position: 'absolute',
             width: birdWidth,
             height: birdHeight,
-            left: birdLeft - (birdWidth/2),
-            bottom: birdBottom - (birdHeight/2),
+            left: birdLeft - (birdWidth / 2),
+            bottom: birdBottom - (birdHeight / 2),
         }}>
-            <Image source={bird_image} style={{ width: birdWidth, height: birdHeight }} />
+            <Image source={bird_image} style={{width: birdWidth, height: birdHeight}}/>
         </View>
     )
 }

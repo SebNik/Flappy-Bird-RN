@@ -1,10 +1,9 @@
 import React from 'react';
-import { StyleSheet, Text, View, Image } from 'react-native';
-import bird_image from '../assets/bird.jpg';
+import {View} from 'react-native';
 
 const Obstacles = ({color, obstaclesLeft, obstaclesWidth, obstaclesHeight, gap, randomBottom}) => {
 
-    return(
+    return (
         <>
             <View style={{
                 position: 'absolute',
