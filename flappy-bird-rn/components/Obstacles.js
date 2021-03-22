@@ -24,7 +24,7 @@ const Obstacles = ({color, obstaclesLeft, obstaclesWidth, obstaclesHeight, gap, 
                 width: obstaclesWidth,
                 height: obstaclesHeight,
                 left: obstaclesLeft,
-                bottom: obstaclesHeight+ gap + randomBottom,
+                bottom: obstaclesHeight + gap + randomBottom,
             }}>
 
             </View>

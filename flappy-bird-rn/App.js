@@ -9,7 +9,7 @@ export default function App() {
     const birdLeft = screen_width / 2
     const [birdBottom, setBirdBottom] = useState(screen_height / 2)
     const [obstaclesLeftOne, setObstaclesLeftOne] = useState(screen_width)
-    const [obstaclesLeftTwo, setObstaclesLeftTwo] = useState(screen_width + screen_width / 2)
+    const [obstaclesLeftTwo, setObstaclesLeftTwo] = useState(screen_width + screen_width / 2 + 20)
     const [obstaclesNegHeightOne, setObstaclesNegHeightOne] = useState(0)
     const [obstaclesNegHeightTwo, setObstaclesNegHeightTwo] = useState(0)
 
@@ -17,8 +17,8 @@ export default function App() {
     let obstaclesLeftTimerIdOne
     let obstaclesLeftTimerIdTwo
     const gap = 200
-    const obstaclesWidth = 60
-    const obstaclesHeight = 500
+    const obstaclesWidth = 50
+    const obstaclesHeight = 300
 
     // console.log(screen_height)
     // console.log(screen_width)
@@ -39,14 +39,14 @@ export default function App() {
     useEffect(() => {
         if (obstaclesLeftOne > -obstaclesWidth) {
             obstaclesLeftTimerIdOne = setInterval(() => {
-                setObstaclesLeftOne(obstaclesLeft => obstaclesLeft - 5)
-            }, 30)
+                setObstaclesLeftOne(obstaclesLeft => obstaclesLeft - 1)
+            }, 6)
             return () => {
                 clearInterval(obstaclesLeftTimerIdOne)
             }
         } else {
             setObstaclesLeftOne(screen_width)
-            setObstaclesNegHeightOne(- Math.random() * 100)
+            setObstaclesNegHeightOne(- Math.random() * 50)
         }
     }, [obstaclesLeftOne])
 
@@ -54,14 +54,14 @@ export default function App() {
     useEffect(() => {
         if (obstaclesLeftTwo > -obstaclesWidth) {
             obstaclesLeftTimerIdTwo = setInterval(() => {
-                setObstaclesLeftTwo(obstaclesLeft => obstaclesLeft - 5)
-            }, 30)
+                setObstaclesLeftTwo(obstaclesLeft => obstaclesLeft - 1)
+            }, 6)
             return () => {
                 clearInterval(obstaclesLeftTimerIdTwo)
             }
         } else {
             setObstaclesLeftTwo(screen_width)
-            setObstaclesNegHeightTwo(- Math.random() * 100)
+            setObstaclesNegHeightTwo(- Math.random() * 50)
         }
     }, [obstaclesLeftTwo])
 
@@ -83,7 +83,7 @@ export default function App() {
                 obstaclesLeft={obstaclesLeftTwo}
                 obstaclesHeight={obstaclesHeight}
                 obstaclesWidth={obstaclesWidth}
-                randomBottom={setObstaclesNegHeightTwo}
+                randomBottom={obstaclesNegHeightTwo}
                 gap={gap}
                 color={'red'}
             />
